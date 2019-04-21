@@ -1,0 +1,251 @@
+<%@ page import="atm.*,java.sql.*" errorPage="info.jsp" contentType="text/html" pageEncoding="UTF-8"%>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/datepicker.css">
+<script src="../../../ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+    
+    <script src="js/datepicker.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="../../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.scroll-link').on('click', function(event){
+            event.preventDefault();
+            var sectionID = $(this).attr("data-id");
+            scrollToID('#' + sectionID, 750);
+        });
+        // scroll to top action
+        $('.scroll-top').on('click', function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop:0}, 'slow');         
+        });
+        // mobile nav toggle
+        $('#nav-toggle').on('click', function (event) {
+            event.preventDefault();
+            $('#main-nav').toggleClass("open");
+        });
+    });
+    
+    function scrollToID(id, speed){
+        var offSet = 0;
+        var targetOffset = $(id).offset().top - offSet;
+        var mainNav = $('#main-nav');
+        $('html,body').animate({scrollTop:targetOffset}, speed);
+        if (mainNav.hasClass("open")) {
+            mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+            mainNav.removeClass("open");
+        }
+    }
+    if (typeof console === "undefined") {
+        console = {
+            log: function() { }
+        };
+    }
+    
+    function clickRadio(){
+            var click = document.getElementsByName("loaive") ;
+            if( document.getElementById("rdkhuhoi").checked){
+                document.getElementById('ngayve').style.display = "inline";
+                document.getElementById('ngayve').required = "none"
+                document.getElementById('lbngayve').style.display = "inline ";
+            }
+            else{
+                document.getElementById('ngayve').style.display = "none";
+                document.getElementById('lbngayve').style.display = "none";
+                document.getElementById('ngayve').required = "";
+                document.getElementById('ngayve').value = "";
+            }
+        };
+    </script>
+<div class="slide">
+        	<div class="datve">
+            	<div class="title">ĐẶT VÉ MÁY BAY</div>
+                <div class="content">
+                	<form id="form-submit" action="dscb" method="post">
+                   	  <table width="100%" border="0">
+                              <tr>
+                                <td width="8%" rowspan="2"><input type="radio" name="loaive" value = "motchieu" id="rdmotchieu" onclick="clickRadio()" /></td>
+                                <td width="28%" rowspan="2"><strong>Một chiều</strong></td>
+                                <td width="8%" rowspan="2"><input type="radio" name="loaive" checked="checked" id="rdkhuhoi" onclick="clickRadio()"/></td>
+                                <td width="23%" rowspan="2"><strong>Khứ hồi</strong></td>
+                                <td height="32" valign="bottom">
+                                    <div align="right">
+                                      <strong>Người lớn </strong>
+                                      <select name="nguoilon">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                      </select>
+                                    </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="33%" height="17" valign="top"> <div align="right">(từ 12 tuổi trở lên)</div></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" rowspan="2"><strong>Điểm đến</strong><br />
+                                    <select required name='noiden' style="width:120px;height: 25px;border-radius:0px;padding-left: 1px;">
+                                        <option value="">Select a location...</option>
+                                        <option value="Tân Sơn Nhất">Tân Sơn Nhất</option>
+                                        <option value="Nội Bài">Nội Bài (Hà Nội)</option>
+                                        <option value="Quảng Nam">Quảng Nam</option>
+                                        <option value="Japan">Japan</option>
+                                        <option value="Korea">Korea</option>
+                                        <option value="Laos">Laos</option>
+                                        <option value="Myanmar">Myanmar</option>
+                                        <option value="Singapore">Singapore</option>
+                                        <option value="Thailand">Thailand</option>
+                                        <option value="Vietnam">Vietnam</option>
+                                     </select>
+                                </td>
+                                <td colspan="2" rowspan="2"><strong>Ngày đi</strong> 
+                                    <input type="text" class="form-control date" placeholder="Select date..." required="" name="ngaydi" style="width:120px;height: 25px;border-radius:0px;padding-left: 1px;">
+                                </td>
+                                <td height="25"><div align="right">
+                                  <strong>Trẻ em </strong>
+                                  <select name="treem">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                  </select>
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td height="17" valign="top"><div align="right">(từ 2 - 11 tuổi)</div></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" rowspan="2"><strong>Điểm đi</strong><br />
+                                    <select required name='noidi' style="width:120px;height: 25px;border-radius:0px;padding-left: 1px;">
+                                        <option value="">Select a location...</option>
+                                        <option value="Tân Sơn Nhất">Tân Sơn Nhất</option>
+                                        <option value="Nội Bài">Nội Bài (Hà Nội)</option>
+                                        <option value="Quảng Nam">Quảng Nam</option>
+                                        <option value="Japan">Japan</option>
+                                        <option value="Korea">Korea</option>
+                                        <option value="Laos">Laos</option>
+                                        <option value="Myanmar">Myanmar</option>
+                                        <option value="Singapore">Singapore</option>
+                                        <option value="Thailand">Thailand</option>
+                                        <option value="Vietnam">Vietnam</option>
+                                     </select>
+                                </td>
+                                <td colspan="2" rowspan="2"><strong id="lbngayve">Ngày về</strong><br />
+                                    <input name="ngayve" id="ngayve" type="text" class="form-control date"  placeholder="Select date..." required="" style="width:120px;height: 25px;border-radius:0px;padding-left: 1px;" onchange='this.form.()'>
+                                </td>
+                                <td height="25"><div align="right">
+                                  <strong>Em bé &nbsp;
+                                  </strong>
+                                  <select name="embe">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                  </select>
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td height="32" valign="top"><div align="right">(dưới 2 tuổi)&nbsp;</div></td>
+                              </tr>
+                            </table>
+                    
+                    <div class="huongdan">
+                    <table width="100%" border="0">
+                          <tr>
+                            <td width="34%" valign="top"><a href="#" style="color:#F00; text-decoration:none;" title="Hướng dẫn đặt vé"><strong>Hướng dẫn đặt vé</strong></a></td>
+                            <td width="66%"><div align="left">
+                              <input type="submit" value=" " class="button" />
+                            </div></td>
+                          </tr>
+                        </table>
+
+                    </div>
+                    </form>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div style="clear:both;"></div>
+    
+    <div id="home">
+    	<div class="boxhome">
+        	<div class="title">CÁC HÌNH THỨC ĐẶT MUA VÉ MÁY BAY</div>
+            <div class="content" style="background:#f5fcff; margin-top:-18px; padding-top:20px;">
+            	<table width="100%" border="0">
+                  <tr>
+                    <td valign="top">
+                        <div class="huongdan">
+                        <div class="vong">1</div><p>Đặt vé trực tiếp trên website</p>
+                        <div class="vong">2</div><p>Gọi điện thoại cho tổng đài viên</p>
+                        <p style="color:#F00; ">0764362448.</p>
+                        <div class="vong">3</div><p>Qua chat với hỗ trợ viên</p>
+                        <div style="padding:10px;">
+                        	<a class="cl_Yh" href="ymsgr:sendim?vemaybayvietmy" title="Chat với Tư vấn vé Quốc Tế">Tư vấn vé Quốc Tế<br>
+											<img title="Tư vấn vé Quốc Tế" style="margin-bottom:5px; padding-right:7px; padding-top:5px;" src="http://opi.yahoo.com/online?u=vemaybayvietmy&amp;m=g&amp;t=2"></a>
+                             <a class="cl_Yh" href="ymsgr:sendim?vemaybayvietmy" title="Chat với Tư vấn vé Quốc Tế">Tư vấn vé Quốc Tế<br>
+											<img title="Tư vấn vé Quốc Tế" style="margin-bottom:5px; padding-right:7px; padding-top:5px;" src="http://opi.yahoo.com/online?u=vemaybayvietmy&amp;m=g&amp;t=2"></a>
+                          	<a class="cl_Yh" href="ymsgr:sendim?vemaybayvietmy" title="Chat với Tư vấn vé Quốc Tế">Tư vấn vé Quốc Tế<br>
+											<img title="Tư vấn vé Quốc Tế" style="margin-bottom:5px; padding-right:7px; padding-top:5px;" src="http://opi.yahoo.com/online?u=vemaybayvietmy&amp;m=g&amp;t=2"></a>
+                            <a class="cl_Yh" href="ymsgr:sendim?vemaybayvietmy" title="Chat với Tư vấn vé Quốc Tế">Tư vấn vé Quốc Tế<br>
+											<img title="Tư vấn vé Quốc Tế" style="margin-bottom:5px; padding-right:5px; padding-top:5px;" src="http://opi.yahoo.com/online?u=vemaybayvietmy&amp;m=g&amp;t=2"></a>
+                        </div>
+                        <div style="clear:both;"></div>
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <div class="huongdan">
+                        	<div class="vong">4</div><p>Đến trực tiếp văn phòng giao dịch</p>
+                            <div class="bando"><img src="images/bando.jpg" width="475" border="0"/></div>
+                        </div>
+                    </td>
+                  </tr>
+                </table>   
+            <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="boxhome">
+        	<div class="title">TIN TỨC NỔI BẬT</div>
+            <div class="content" style="padding-top:15px;">
+            	<div class="news">
+                	<div class="image"><a href="#"><img src="images/news_04.jpg" /><a href="#"></div>
+                    <div class="detail">
+                    	<h3><a href="#">Vé máy bay giá rẻ</a></h3>
+                        <div class="summary">- Du khách đi du lịch Thái Lan có rất nhiều thuận lợi về giá cả rẻ, thắng cảnh đẹp và sự tiện lợi khi đặt mua vé máy bay đi Thái Lan ngay tại thời điểm này</div>
+                        <div class="more"><a href="#">Xem tiếp</a></div>
+                    </div>
+                </div>
+                <div class="news">
+                	<div class="image"><a href="#"><img src="images/news_04.jpg" /><a href="#"></div>
+                    <div class="detail">
+                    	<h3><a href="#">Vé máy bay giá rẻ</a></h3>
+                        <div class="summary">- Du khách đi du lịch Thái Lan có rất nhiều thuận lợi về giá cả rẻ, thắng cảnh đẹp và sự tiện lợi khi đặt mua vé máy bay đi Thái Lan ngay tại thời điểm này</div>
+                        <div class="more"><a href="#">Xem tiếp</a></div>
+                    </div>
+                </div>
+                <div class="news">
+                	<div class="image"><a href="#"><img src="images/news_04.jpg" /><a href="#"></div>
+                    <div class="detail">
+                    	<h3><a href="#">Vé máy bay giá rẻ</a></h3>
+                        <div class="summary">- Du khách đi du lịch Thái Lan có rất nhiều thuận lợi về giá cả rẻ, thắng cảnh đẹp và sự tiện lợi khi đặt mua vé máy bay đi Thái Lan ngay tại thời điểm này</div>
+                        <div class="more"><a href="#">Xem tiếp</a></div>
+                    </div>
+                </div>
+                <div class="news">
+                	<div class="image"><a href="#"><img src="images/news_04.jpg" /><a href="#"></div>
+                    <div class="detail">
+                    	<h3><a href="#">Vé máy bay giá rẻ</a></h3>
+                        <div class="summary">- Du khách đi du lịch Thái Lan có rất nhiều thuận lợi về giá cả rẻ, thắng cảnh đẹp và sự tiện lợi khi đặt mua vé máy bay đi Thái Lan ngay tại thời điểm này</div>
+                        <div class="more"><a href="#">Xem tiếp</a></div>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+       </div>
+    </div>

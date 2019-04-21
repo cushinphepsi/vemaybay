@@ -1,0 +1,107 @@
+@charset "utf-8";
+*{box-sizing: border-box;}
+body { margin:0; padding:0; font-size:12px; font-family:Tahoma, Geneva, sans-serif;}
+#page {}
+#header { width:1000px; margin:0 auto;}
+#header .logo { padding-top:20px;}
+#header .menu { background:url(images/bg_menu.png) no-repeat center; height:80px; z-index:80; position:relative; margin-left:8px;}
+#header .menu ul { list-style:none;}
+#header .menu ul li { float:left;}
+#header .menu ul li a { display:block; padding:15px; text-decoration:none; color:#FFF; text-transform:uppercase; padding-top:25px; font-family:Tahoma, Geneva, sans-serif; font-weight:bold; font-size:15px;}
+#header .menu ul li a:hover  { color:#FF0;}
+#header .slide { font-size : 12px;background:url(images/slide.png) no-repeat; height:400px; width:1020px; margin:auto; margin-top:-89px; padding-top:78px;}
+.bando { background:url(images/bong_bando.png)bottom no-repeat; padding-bottom:25px;}
+.datve { width:420px; margin-left:60px; background: url(images/nen_datve.png) ; margin-right:10px; padding:20px; padding-bottom:10p; padding-top:10px; z-index:99999; position:relative;}
+.datve .title { color:#000; border-bottom:2px solid #fff; font-size:19px; padding-top:10px; padding-bottom:5px; font-family:Myriad Pro;}
+.slide_slide {width:1000px; margin-top:-300px;}
+.button { background:url(images/datve.png) no-repeat; height:60px; width:155px; border:none;}
+.tinhot { background:#fff;}
+
+.submit-form .date {
+	margin-bottom: 10px;
+	width: 100%;
+	border: none;
+	background-color: #e7e7e7;
+	font-size: 11px;
+	color: #9a9a9a;
+	outline: none;
+	padding-left: 15px;
+	margin-left: 0px;
+	display: inline-block;
+	box-shadow: none;
+	border-radius: 0px;
+}
+
+#home { width:1000px; margin:0 auto; background:#fff; border-top:1px solid #00b1f6; padding-top:5px;}
+.boxhome { }
+.boxhome .title { background:url(images/2.png) no-repeat; height:30px; color:#fff; font-weight:bold; padding-left:50px; padding-top:10px; width:342px; position:relative; z-index:99;}
+.boxhome .content { }
+.huongdan { padding-bottom:10px; width:460px;}
+.huongdan p { color:#009900; font-family:Myriad Pro; font-weight:bold; font-size:15px; padding-left:50px; padding-top:5px;}
+.vong { background:#5fae2e; width:30px; height:23px; border-radius:15px; text-align:center; padding-top:7px; font-weight:bold; color:#fff; float:left; margin-left:10px;}
+.hangve { border-top:1px solid #00b1f6}
+.hangve p { text-transform:uppercase; font-weight:bold;}
+.cl_Yh {
+color: #5fae2e;display: block;float: left;font-weight: bold;padding: 2px 11px 2px 0px;text-align: left;text-decoration: none;
+}
+.news { width:500px; float:left; padding-bottom:25px;}
+.news .image { float:left; width:240px;}
+.news .detail { padding-left:10px; width:220px; float:left;}
+.news .detail h3 {font-size: 14px;font-weight: 700; margin:0; padding:0; padding-bottom:10px;}
+.news .detail h3 a { text-decoration:none; color:#5fae2e; text-transform:uppercase;}
+.news .detail .summary { color:#666; height:90px; line-height:20px; text-align:justify}
+.news .detail .more { width:80px; background:#5fae2e; text-align:center; margin-left:140px;}
+.news .detail .more a { display:block; padding:10px; text-decoration:none; color:#fff; font-weight:bold;}
+.news .detail .more a:hover { color:#FF0;}
+
+#footer { background:#85b53f;}
+
+.footer { width:1000px; margin:auto;}
+.footer .ft { width:250px; float:left; padding-top:10px; padding-bottom:10px;}
+.footer .ft .title { text-transform:uppercase; color:#252525; border-bottom:1px solid #85b53f; padding-bottom:5px; width:230px;}
+.footer .ft .content { color:#333333; padding-top:10px; width:230px;}
+.footer .ft .content ul { padding:0; margin:0; list-style:none;}
+.footer .ft .content ul li { padding-top:5px; padding-bottom:5px;}
+.footer .ft .content ul li a { text-decoration:none; color:#333333; padding-top:5px; }
+.footer .ft .content ul li a:hover { color:#F00;}
+
+
+.footer1 { width:1000px; margin:auto; margin-top:10px;}
+.footer1 .ft { width:250px; float:left; padding-top:20px; padding-bottom:10px;}
+.footer1 .ft .title { text-transform:uppercase; color:#000; font-weight:bold; font-size:15px;}
+.footer1 .ft .content { color:#000; padding-top:10px;font-weight:bold; }
+.footer1 .ft .content ul { padding:0; margin:0; list-style:none;}
+.footer1 .ft .content ul li { padding-top:5px; padding-bottom:5px;}
+.footer1 .ft .content ul li a { text-decoration:none; color:#000; padding-top:5px; font-weight:bold; font-size:11px;}
+.footer1 .ft .content ul li a:hover { color:#FF0;}
+.footer1 .ft .contenta { color:#000; padding-top:10px;}
+.footer1 .ft .contenta a { text-decoration:none; color:#252525; padding-top:5px; text-transform:uppercase; font-weight:bold; font-size:10px; font-weight:bold;}
+.footer1 .ft .contenta a:hover { color:#FF0;}
+.mangxahoi { padding-top:10px;}
+.mangxahoi a { color:#000; text-decoration:none}
+.mangxahoi a:hover { color:#FF0}
+
+#content { width:1000px; margin:0 auto; }
+/*danh sách chuyến bay sau khi tìm kiếm và TẤT CẢ tiêu đề*/
+#danhsachcb {width: 100%}
+.thanhtieude { height: 40px ; background-color: #00b300 ; margin: 3px 0px 0px 0px  ; padding: 1px 5px ; font-size: 14px ; color: #f2f2f2}
+.thanhtieude .tieude {font-weight: bold ; margin: 2px 2px 0px 2px}
+.thanhtieude #ngaydi { margin: 3px 2px}
+
+#danhsach {   font-size: 14px}
+#danhsach #table {	width: 1000px ;border-collapse: collapse; margin: 2px 0px}
+#danhsach  #tieude { height : 30px ;background-color: #b8b894 ; font-weight: bold ; margin: 0px; padding: 0px}
+#danhsach  #tieude td { padding: 0px 10px}
+#danhsach #chitiet { background-color: #f2f2f2 ; margin : 0px; height: 50px}
+#danhsach #chitiet td { padding: 0px 10px}
+
+#chitietcb{height: 350px ; background-color: #f2f2f2; margin : 0px}
+#noidi { height: 30px ; background-color: #d6d6c2 ; font-size: 12px ; padding: 9px 5px ; }
+#noidi span {  }
+
+#dskh{ height: 200px }
+.khachhang { border: 1px solid #b8b894 ; height: 160px ; margin-bottom: 75px}
+.khachhang span { font-size: 14px ; padding: 40px 15px;margin-right: 40px}
+.khachhang input {width: 420px ; height: 30px}
+
+.chongoi{ width: 40px ; height: 40px ; background-color: red;margin: 10px}
